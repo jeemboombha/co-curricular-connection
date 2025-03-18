@@ -12,6 +12,18 @@ import Dashboard from "./pages/Dashboard";
 import Login from "./pages/auth/Login";
 import NotFound from "./pages/NotFound";
 
+// Student pages
+import EventForm from "./components/forms/EventForm";
+import StudentSubmissions from "./pages/student/Submissions";
+
+// Faculty pages
+import FacultyDashboard from "./pages/faculty/Dashboard";
+import FacultyStudents from "./pages/faculty/Students";
+import FacultyRequests from "./pages/faculty/Requests";
+
+// Admin pages
+import AdminDashboard from "./pages/admin/Dashboard";
+
 // Import framer-motion
 import { LazyMotion, domAnimation } from "framer-motion";
 
@@ -44,8 +56,66 @@ const App = () => (
                     />
                   }
                 />
+                <Route
+                  path="/add/:eventType"
+                  element={
+                    <ProtectedRoute
+                      element={<EventForm />}
+                      allowedRoles={["student"]}
+                    />
+                  }
+                />
+                <Route
+                  path="/view"
+                  element={
+                    <ProtectedRoute
+                      element={<StudentSubmissions />}
+                      allowedRoles={["student"]}
+                    />
+                  }
+                />
                 
-                {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+                {/* Faculty routes */}
+                <Route
+                  path="/faculty"
+                  element={
+                    <ProtectedRoute
+                      element={<FacultyDashboard />}
+                      allowedRoles={["faculty"]}
+                    />
+                  }
+                />
+                <Route
+                  path="/faculty/students"
+                  element={
+                    <ProtectedRoute
+                      element={<FacultyStudents />}
+                      allowedRoles={["faculty"]}
+                    />
+                  }
+                />
+                <Route
+                  path="/faculty/requests"
+                  element={
+                    <ProtectedRoute
+                      element={<FacultyRequests />}
+                      allowedRoles={["faculty"]}
+                    />
+                  }
+                />
+                
+                {/* Admin routes */}
+                <Route
+                  path="/admin"
+                  element={
+                    <ProtectedRoute
+                      element={<AdminDashboard />}
+                      allowedRoles={["admin"]}
+                    />
+                  }
+                />
+                
+                {/* Catch-all route */}
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </PageTransition>
