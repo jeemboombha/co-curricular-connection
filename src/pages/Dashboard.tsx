@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { useAuth } from "@/contexts/AuthContext";
 import { 
   Award, BookOpen, Briefcase, Building, FileText, 
-  GraduationCap, Music, PlusCircle, Star, Users 
+  GraduationCap, Laptop, Music, PlusCircle, Star, Users 
 } from "lucide-react";
 
 export default function Dashboard() {
