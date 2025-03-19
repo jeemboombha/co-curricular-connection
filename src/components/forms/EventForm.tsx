@@ -31,6 +31,37 @@ import { format } from "date-fns";
 import { CalendarIcon, ArrowLeft } from "lucide-react";
 import { useToast } from "@/components/ui/use-toast";
 
+// Define a base schema interface with optional fields
+interface BaseFormValues {
+  eventName?: string;
+  location?: string;
+  awards?: string;
+  category?: string;
+  description?: string;
+  participationType?: string;
+  name?: string;
+  membershipType?: string;
+  company?: string;
+  role?: string;
+  stipend?: string;
+  core?: string;
+  hiringMode?: string;
+  ctc?: string;
+  type?: string;
+  title?: string;
+  journalName?: string;
+  volume?: string;
+  issue?: string;
+  pageNumbers?: string;
+  publisher?: string;
+  issn?: string;
+  conferenceName?: string;
+  conferenceLocation?: string;
+  organizer?: string;
+  proceedingsPublisher?: string;
+  isbn?: string;
+}
+
 export default function EventForm() {
   const { eventType } = useParams();
   const navigate = useNavigate();
@@ -137,7 +168,7 @@ export default function EventForm() {
   }
 
   // Initialize form with the selected schema
-  const form = useForm({
+  const form = useForm<BaseFormValues>({
     resolver: zodResolver(schema),
     defaultValues: {},
   });
@@ -179,7 +210,7 @@ export default function EventForm() {
   const researchTypes = ["Journal Article", "Conference Paper"];
 
   // Handle form submission
-  const onSubmit = (data: any) => {
+  const onSubmit = (data: BaseFormValues) => {
     setIsSubmitting(true);
     
     // Add date to the data

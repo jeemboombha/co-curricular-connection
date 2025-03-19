@@ -20,9 +20,16 @@ import StudentSubmissions from "./pages/student/Submissions";
 import FacultyDashboard from "./pages/faculty/Dashboard";
 import FacultyStudents from "./pages/faculty/Students";
 import FacultyRequests from "./pages/faculty/Requests";
+import FacultyVerified from "./pages/faculty/Verified";
+import FacultyReports from "./pages/faculty/Reports";
 
 // Admin pages
 import AdminDashboard from "./pages/admin/Dashboard";
+import AdminUsers from "./pages/admin/Users";
+import AdminDropdowns from "./pages/admin/Dropdowns";
+import AdminUpload from "./pages/admin/Upload";
+import AdminReports from "./pages/admin/Reports";
+import AdminSettings from "./pages/admin/Settings";
 
 // Import framer-motion
 import { LazyMotion, domAnimation } from "framer-motion";
@@ -103,6 +110,24 @@ const App = () => (
                     />
                   }
                 />
+                <Route
+                  path="/faculty/verified"
+                  element={
+                    <ProtectedRoute
+                      element={<FacultyVerified />}
+                      allowedRoles={["faculty"]}
+                    />
+                  }
+                />
+                <Route
+                  path="/faculty/reports"
+                  element={
+                    <ProtectedRoute
+                      element={<FacultyReports />}
+                      allowedRoles={["faculty"]}
+                    />
+                  }
+                />
                 
                 {/* Admin routes */}
                 <Route
@@ -110,6 +135,51 @@ const App = () => (
                   element={
                     <ProtectedRoute
                       element={<AdminDashboard />}
+                      allowedRoles={["admin"]}
+                    />
+                  }
+                />
+                <Route
+                  path="/admin/users"
+                  element={
+                    <ProtectedRoute
+                      element={<AdminUsers />}
+                      allowedRoles={["admin"]}
+                    />
+                  }
+                />
+                <Route
+                  path="/admin/dropdowns"
+                  element={
+                    <ProtectedRoute
+                      element={<AdminDropdowns />}
+                      allowedRoles={["admin"]}
+                    />
+                  }
+                />
+                <Route
+                  path="/admin/upload"
+                  element={
+                    <ProtectedRoute
+                      element={<AdminUpload />}
+                      allowedRoles={["admin"]}
+                    />
+                  }
+                />
+                <Route
+                  path="/admin/reports"
+                  element={
+                    <ProtectedRoute
+                      element={<AdminReports />}
+                      allowedRoles={["admin"]}
+                    />
+                  }
+                />
+                <Route
+                  path="/admin/settings"
+                  element={
+                    <ProtectedRoute
+                      element={<AdminSettings />}
                       allowedRoles={["admin"]}
                     />
                   }
