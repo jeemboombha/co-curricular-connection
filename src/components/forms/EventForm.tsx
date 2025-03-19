@@ -223,7 +223,7 @@ export default function EventForm() {
         <p className="text-muted-foreground mt-1 ml-10">
           Fill in the details to add a new entry
         </p>
-      </motion.div>
+      </div>
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}
